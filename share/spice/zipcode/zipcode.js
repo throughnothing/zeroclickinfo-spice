@@ -1,4 +1,4 @@
-function ddg_spice_zipcode (api_result) {
+window.ddg_spice_zipcode = function(api_result) {
     "use strict";
 
     // Check errors.
@@ -6,121 +6,144 @@ function ddg_spice_zipcode (api_result) {
         return;
     }
 
-    // Get the original query zipcode and country name
-    var query,
-        script  = $("[src*='js/spice/zipcode']")[0],
-        source  = $(script).attr("src"),
-        matches = source.match(/\/([^\/]+)\/(\w+)$/);
+    // Get the original query.
+    var query;
+    $("script").each(function() {
+        var matched, result;
+        matched = $(this).attr("src");
+        if(matched) {
+            result = matched.match(/\/js\/spice\/zipcode\/(.+?)\//);
+            if(result) {
+                query = result[1];
+            }
+        }
+    });
+    var script  = $("[src*='js/spice/zipcode']")[0],
+     	source  = $(script).attr("src"),
+     	matches = source.match(/\/([^\/]+)\/(\w+)$/);
 
-    // expose the zipcode and country from the query
-    api_result.zip = matches[1];
-    api_result.country = matches[2];
-
-    // Get the right result based on the query
-    var place = zipcode_getCountry(api_result, matches);
-
-    api_result.relevantPlace = place;
+	// expose the zipcode and country from the query
+     api_result.zip = matches[1];
+     api_result.country = matches[2];
 
     // Make sure we have a relevant result
-    if (!place) return;
+    if (!has_relevant_result(api_result, matches)) return;
 
-    // Get location
-    var names = ["locality1", "admin2", "admin1"],
-        header = [];
+    // Expose the query. We want a Handlebars helper to use it later.
+    window.ddg_spice_zipcode.query = query;
 
-    for (var i = 0; i < names.length ; i++) {
-        var name = place[names[i]];
-        if (name.length && header.indexOf(name) === -1) header.push(name);
-    };
+	// Get location
+    var name_sections = ["locality1", "admin2", "admin1", "country"],
+        header = [],
+        headers = [];
 
-    header.push(place.country);
-    var header_string = header.join(", ");
+     var places = api_result.places.place;
 
-    // Get latlong coords for "more at" link
-    var latitude = place.centroid.latitude;
-    var longitude = place.centroid.longitude;
+	 // for each result with the same zipcode, construct header string and add to headers array.
+	 for (var j = 0; j < places.length ; j++) {
+         var condensed_zipcode = places[j].name.replace(/\s+/, '');
+    	 if (condensed_zipcode  == api_result.zip)  {
+    	 	 for (var i = 0; i < name_sections.length ; i++) {
+        	 	 var name = places[j][name_sections[i]];
+        	 	 if (name.length && condensed_zipcode  == api_result.zip && header.indexOf(name) === -1)  {  
+        	 	 	 header.push(name);
+        	 	 }
+    	 	 };
+    	 	 var header_string = header.join(", ");
+    	 	 headers.push(header_string);
+		 	 header = [];
+    	 }
+     };
 
     // Display the Spice plugin.
     Spice.render({
         data              : api_result,
-        header1           : header_string,
+        header1           : headers[0],
         force_big_header  : true,
+        force_no_fold 	  : true,
         source_name       : "MapQuest",
-        source_url        : "http://mapq.st/map?q=" + encodeURIComponent(latitude + "," + longitude),
-        template_normal   : "zipcode",
-        force_no_fold     : true
+        source_url        : "http://mapq.st/map?q=" + query,
+        template_normal   : "zipcode"
     });
-};
 
-// If a country was specified in the query
-// select the result which returned for the
-// given country or return null if no match
-function zipcode_getCountry (result, matches) {
+    var loadMap = function() {
+        // Point to the icons folder.
+        L.Icon.Default.imagePath = "/dist/images";
 
-    var zip     = result.zip,
-        country = result.country,
-        locs    = result.places.place;
+        // Initialize the map.
+        var map = L.map('map');
 
-    for (var i = 0; i < locs.length; i++) {
+        // Tell Leaflet where to get the map tiles.
+        L.tileLayer('http://{s}.tile.cloudmade.com/2f62ad0b4ba046f2b907b67e2c866fa4/997/256/{z}/{x}/{y}.png', {
+            maxZoom: 18, detectRetina: true }).addTo(map);
 
-        var current = locs[i];
-        var resName = current.name.replace(/s+/, "");
+        // Let's make a rectangle, shall we?
+        // This rectangle is used to mark the area occupied by the area code.
+        $(".places").each(function(index) {
+            var southWest = $(this).data("southwest").split("|");
+            var northEast = $(this).data("northeast").split("|");
 
-        // check if zipcodes match and either countries match OR no country specified
-        if (resName === zip && ( country === "ZZ" || current["country attrs"].code === country )){
-            return locs[i];
-        };
+            southWest = new L.LatLng(southWest[0], southWest[1]);
+            northEast = new L.LatLng(northEast[0], northEast[1]);
+
+            var bounds = new L.LatLngBounds(southWest, northEast);
+            L.rectangle(bounds,{color: "#ff7800", weight: 1}).addTo(map);
+
+            // Zoom in to the first one.
+            if(index === 0) {
+                map.fitBounds(bounds);
+            }
+
+            // Zoom in to the location when the link is clicked.
+            $(this).click(function() {
+                (function(bounds) {
+                    $("#zero_click_header").empty().append(headers[index]);
+                    map.fitBounds(bounds);
+                }(bounds));
+            });
+        });
     };
-    return null;
+
+    // Load LeafletJS.
+    $.getScript("/dist/leaflet.js", loadMap);
 };
 
+// from zipcode.js on master
+function has_relevant_result(result, matches) {
+	var zip     = result.zip,
+	    country = result.country,
+	    locs    = result.places.place;
+
+	for (var i = 0; i < locs.length; i++) {
+
+	    var current = locs[i];
+	    var resName = current.name.replace(/\s+/, "");
+
+	    // check if zipcodes match and either countries match OR no country specified
+	    if (resName === zip && ( country === "ZZ" || current["country attrs"].code === country )){
+	    	return true;
+	    };
+	};
+	return false;
+};
 // Filter the zipcodes.
 // Only get the ones which are actually equal to the query.
-Handlebars.registerHelper("checkZipcode", function(options) {
+Handlebars.registerHelper("checkZipcode", function(context) {
     "use strict";
 
-    var result  = [],
-        locs    = this.places.place,
-        name    = this.zip,
-        country = this.relevantPlace["country attrs"].code;
+    var result = [];
+    var place = this.places.place;
+    var name = window.ddg_spice_zipcode.query;
 
-    if(locs.length === 1) return;
-
-    locs = locs.sort(function(a, b) {
-        return a.country > b.country ? 1 : -1;
-    });
-
-    for(var i = 1; i < locs.length; i += 1) {
-        if(locs[i].name === name &&
-            locs[i]["country attrs"].code !== country ) {
-            result.push(locs[i]);
-        }
-    }
-
-    if(result.length === 0) {
+    if(place.length === 1) {
         return;
     }
 
-    result = options.fn(result);
-
-    if(result.replace(/\s+/, "") !== "") {
-        return "Postal code " + name + " in other countries: " + result;
+    for(var i = 1; i < place.length; i += 1) {
+        if(place[i].name === name) {
+            result.push(place[i]);
+        }
     }
-});
 
-Handlebars.registerHelper("bigbox", function(northEast, southWest) {
-    var boxpad = (northEast.latitude - southWest.latitude) * 0.25;
-
-    return [[northEast.latitude + boxpad, southWest.longitude],
-            [southWest.latitude - boxpad, northEast.longitude]].join();
-});
-
-Handlebars.registerHelper("coordString", function(northEast, southWest) {
-    var box = [[southWest.latitude, southWest.longitude].join(),
-               [northEast.latitude, southWest.longitude].join(),
-               [northEast.latitude, northEast.longitude].join(),
-               [southWest.latitude, northEast.longitude].join(),
-               [southWest.latitude, southWest.longitude].join()];
-
-    return box.join(",");
+    return context.fn(result);
 });
