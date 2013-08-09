@@ -2,17 +2,9 @@ function ddg_spice_seatgeek_schedule (api_result) {
     var query = "";
 
     // Get the original query.
-    // We're going to pass this to the More at SoundCloud link.
-    var matched, result;
-    $("script").each(function() {
-        matched = $(this).attr("src");
-        if(matched) {
-            result = matched.match(/\/js\/spice\/sound_cloud\/(.+)/);
-            if(result) {
-                query = result[1];
-            }
-        }
-    });
+    // We're going to pass this to the More at SeatGeek link.
+    var script = $('[src*="/js/spice/seatgeek/schedule"]').attr("src");
+    var query = script.match(/seatgeek\/schedule\/([^\/]+)/)[1];
 
     Spice.render({
         data              : api_result,
@@ -20,15 +12,16 @@ function ddg_spice_seatgeek_schedule (api_result) {
         force_big_header  : true,
         source_name       : "SeatGeek",
         source_url        : "http://seatgeek.com/search?search=" + query,
-        template_normal   : "seatgeek_schedule"
+        template_normal   : "seatgeek_schedule",
+	force_no_fold     : 1
     });
 
     $(".zero_click_snippet").attr("style", "margin-left: 0px !important; display: block;");
 
     // Load Leaflet.js.
-    $.getScript("/dist/leaflet.js", function() {
+    $.getScript("/js/leaflet/leaflet.js", function() {
         // Point to the icons folder.
-        L.Icon.Default.imagePath = "/dist/images";
+        L.Icon.Default.imagePath = "/js/leaflet/images";
 
         // Initialize the map.
         var map = L.map('map');
