@@ -5,7 +5,8 @@ function ddg_spice_seatgeek_concert (api_result) {
         force_big_header  : true,
         source_name       : "SeatGeek",
         source_url        : "http://seatgeek.com/",
-        template_normal   : "seatgeek_concert"
+        template_normal   : "seatgeek_concert",
+	force_no_fold     : true
     });
 
     $(".zero_click_snippet").attr("style", "margin-left: 0px !important; display: block;");
@@ -13,15 +14,15 @@ function ddg_spice_seatgeek_concert (api_result) {
     var image_proxy = "/iu/?u=";
 
     // Load Leaflet.js.
-    $.getScript("/dist/leaflet.js", function() {
+    $.getScript("/js/leaflet/leaflet.js", function() {
         // Point to the icons folder.
-        L.Icon.Default.imagePath = "/dist/images";
+        L.Icon.Default.imagePath = "/js/leaflet/images";
 
         // Initialize the map.
         var map = L.map('map');
 
         // Tell Leaflet where to get the map tiles.
-        L.tileLayer('http://{s}.tile.cloudmade.com/2f62ad0b4ba046f2b907b67e2c866fa4/997/256/{z}/{x}/{y}.png', {
+        L.tileLayer(image_proxy + 'http://{s}.tile.cloudmade.com/2f62ad0b4ba046f2b907b67e2c866fa4/997/256/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy <a href="http://cloudmade.com">CloudMade</a>',
             maxZoom: 18
         }).addTo(map);
