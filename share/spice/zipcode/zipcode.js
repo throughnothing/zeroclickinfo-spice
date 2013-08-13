@@ -68,13 +68,13 @@ window.ddg_spice_zipcode = function(api_result) {
 
     var loadMap = function() {
         // Point to the icons folder.
-        L.Icon.Default.imagePath = "/dist/images";
+        L.Icon.Default.imagePath = "/js/leaflet/images";
 
         // Initialize the map.
         var map = L.map('map');
 
         // Tell Leaflet where to get the map tiles.
-        L.tileLayer('http://{s}.tile.cloudmade.com/2f62ad0b4ba046f2b907b67e2c866fa4/997/256/{z}/{x}/{y}.png', {
+        L.tileLayer('https://flamingtoast.duckduckgo.com/{s}-otile/{z}/{x}/{y}.png', {
             maxZoom: 18, detectRetina: true }).addTo(map);
 
         // Let's make a rectangle, shall we?
@@ -105,7 +105,7 @@ window.ddg_spice_zipcode = function(api_result) {
     };
 
     // Load LeafletJS.
-    $.getScript("/dist/leaflet.js", loadMap);
+    $.getScript("/js/leaflet/leaflet.js", loadMap);
 };
 
 // from zipcode.js on master
