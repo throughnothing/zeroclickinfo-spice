@@ -6,25 +6,14 @@ window.ddg_spice_zipcode = function(api_result) {
         return;
     }
 
-    // Get the original query.
-    var query;
-    $("script").each(function() {
-        var matched, result;
-        matched = $(this).attr("src");
-        if(matched) {
-            result = matched.match(/\/js\/spice\/zipcode\/(.+?)\//);
-            if(result) {
-                query = result[1];
-            }
-        }
-    });
-    var script  = $("[src*='js/spice/zipcode']")[0],
-     	source  = $(script).attr("src"),
-     	matches = source.match(/\/([^\/]+)\/(\w+)$/);
+    var script  = $("[src*='js/spice/zipcode']").attr("src");
+    var matches = script.match(/\/([^\/]+)\/(\w+)$/);
 
-	// expose the zipcode and country from the query
-     api_result.zip = matches[1];
-     api_result.country = matches[2];
+    var query = matches[1];
+
+    // expose the zipcode and country from the query
+    api_result.zip = matches[1];
+    api_result.country = matches[2];
 
     // Make sure we have a relevant result
     if (!has_relevant_result(api_result, matches)) return;
