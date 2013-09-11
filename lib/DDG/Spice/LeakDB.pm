@@ -1,4 +1,5 @@
 package DDG::Spice::LeakDB;
+# ABSTRACT
 
 use DDG::Spice;
 

@@ -1,4 +1,5 @@
 package DDG::Spice::Lastfm::Album;
+# ABSTRACT
 # ABSTRACT: Display album info.
 
 use DDG::Spice;

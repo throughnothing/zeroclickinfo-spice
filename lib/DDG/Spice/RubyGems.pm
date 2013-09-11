@@ -1,4 +1,5 @@
 package DDG::Spice::RubyGems;
+# ABSTRACT
 
 use DDG::Spice;
 

@@ -1,4 +1,5 @@
 package DDG::Spice::Dictionary::Pronunciation;
+# ABSTRACT
 
 use DDG::Spice;
 

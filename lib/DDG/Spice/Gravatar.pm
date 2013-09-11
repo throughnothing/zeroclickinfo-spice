@@ -1,4 +1,5 @@
 package DDG::Spice::Gravatar;
+# ABSTRACT
 # ABSTRACT: Shows gravatar of a given e-mail.
 
 use DDG::Spice;

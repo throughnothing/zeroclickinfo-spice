@@ -1,4 +1,5 @@
 package DDG::Spice::Seatgeek::Schedule;
+# ABSTRACT
 # ABSTRACT: Search for music shows near the user location.
 
 use DDG::Spice;

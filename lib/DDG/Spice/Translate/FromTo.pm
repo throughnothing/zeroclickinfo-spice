@@ -1,4 +1,5 @@
 package DDG::Spice::Translate::FromTo;
+# ABSTRACT
 
 use DDG::Spice;
 use Moo;

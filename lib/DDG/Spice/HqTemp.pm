@@ -1,4 +1,5 @@
 package DDG::Spice::HqTemp;
+# ABSTRACT
 
 use DDG::Spice;
 

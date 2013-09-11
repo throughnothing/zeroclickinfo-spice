@@ -1,4 +1,5 @@
 package DDG::Spice::OpenSNP;
+# ABSTRACT
 
 use DDG::Spice;
 

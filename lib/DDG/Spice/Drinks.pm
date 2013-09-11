@@ -1,4 +1,5 @@
 package DDG::Spice::Drinks;
+# ABSTRACT
 
 use DDG::Spice;
 

@@ -1,4 +1,5 @@
 package DDG::Spice::Translate::Detect;
+# ABSTRACT
 
 use DDG::Spice;
 use Moo;

@@ -1,4 +1,5 @@
 package DDG::Spice::IsItUp;
+# ABSTRACT
 
 use DDG::Spice;
 

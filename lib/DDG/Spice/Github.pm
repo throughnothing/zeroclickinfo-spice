@@ -1,4 +1,5 @@
 package DDG::Spice::Github;
+# ABSTRACT
 # ABSTRACT: Search for information about GitHub repositories
 
 use DDG::Spice;

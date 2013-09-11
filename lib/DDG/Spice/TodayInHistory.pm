@@ -1,4 +1,5 @@
 package DDG::Spice::TodayInHistory;
+# ABSTRACT
 
 use DDG::Spice;
 

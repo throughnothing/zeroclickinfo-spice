@@ -1,4 +1,5 @@
 package DDG::Spice::SEPTA;
+# ABSTRACT
 
 use DDG::Spice;
 

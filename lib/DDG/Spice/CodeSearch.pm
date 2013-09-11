@@ -1,4 +1,5 @@
 package DDG::Spice::CodeSearch;
+# ABSTRACT
 
 use DDG::Spice;
 

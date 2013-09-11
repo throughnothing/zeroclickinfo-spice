@@ -1,4 +1,5 @@
 package DDG::Spice::UrbanDictionary;
+# ABSTRACT
 # ABSTRACT: Give the Urban Dictionary definition of the search query.
 
 use DDG::Spice;

@@ -1,4 +1,5 @@
 package DDG::Spice::Hackage::Packages;
+# ABSTRACT
 # ABSTRACT: Search for information about Hackage packages
 
 use DDG::Spice;

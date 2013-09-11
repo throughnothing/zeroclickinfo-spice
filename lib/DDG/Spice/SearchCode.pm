@@ -1,4 +1,5 @@
 package DDG::Spice::SearchCode;
+# ABSTRACT
 
 use DDG::Spice;
 use File::Slurp;

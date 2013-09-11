@@ -1,4 +1,5 @@
 package DDG::Spice::Aur;
+# ABSTRACT
 
 use DDG::Spice;
 

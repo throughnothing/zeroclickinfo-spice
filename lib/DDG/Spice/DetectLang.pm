@@ -1,4 +1,5 @@
 package DDG::Spice::DetectLang;
+# ABSTRACT
 
 use utf8;
 use DDG::Spice;

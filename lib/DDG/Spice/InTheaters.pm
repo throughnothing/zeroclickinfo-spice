@@ -1,4 +1,5 @@
 package DDG::Spice::InTheaters;
+# ABSTRACT
 # ABSTRACT: Show movies from Rotten Tomatoes.
 
 use DDG::Spice;

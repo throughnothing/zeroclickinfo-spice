@@ -1,4 +1,5 @@
 package DDG::Spice::Bible;
+# ABSTRACT
 
 use DDG::Spice;
 

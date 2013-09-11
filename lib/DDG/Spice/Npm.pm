@@ -1,4 +1,5 @@
 package DDG::Spice::Npm;
+# ABSTRACT
 # ABSTRACT: Returns package information from npm package manager's registry.
 
 use DDG::Spice;

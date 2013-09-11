@@ -1,4 +1,5 @@
 package DDG::Spice::Octopart;
+# ABSTRACT
 
 use DDG::Spice;
 

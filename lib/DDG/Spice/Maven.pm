@@ -1,4 +1,5 @@
 package DDG::Spice::Maven;
+# ABSTRACT
 # ABSTRACT: Search library in Maven Central Repository.
 
 use DDG::Spice;

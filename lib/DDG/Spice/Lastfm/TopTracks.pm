@@ -1,4 +1,5 @@
 package DDG::Spice::Lastfm::TopTracks;
+# ABSTRACT
 # ABSTRACT: Top 10 songs in a country. Defaults to USA.
 
 use DDG::Spice;

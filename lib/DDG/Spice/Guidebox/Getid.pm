@@ -1,4 +1,5 @@
 package DDG::Spice::Guidebox::Getid;
+# ABSTRACT
 
 use DDG::Spice;
 

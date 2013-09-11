@@ -1,4 +1,5 @@
 package DDG::Spice::Smbc;
+# ABSTRACT
 
 use DDG::Spice;
 

@@ -1,4 +1,5 @@
 package DDG::Spice::Snow;
+# ABSTRACT
 
 use DDG::Spice;
 

@@ -1,4 +1,5 @@
 package DDG::Spice::Dictionary::Definition;
+# ABSTRACT
 
 use DDG::Spice;
 

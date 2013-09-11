@@ -1,4 +1,5 @@
 package DDG::Spice::AlternativeTo;
+# ABSTRACT
 
 use DDG::Spice;
 

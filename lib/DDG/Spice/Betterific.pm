@@ -1,4 +1,5 @@
 package DDG::Spice::Betterific;
+# ABSTRACT
 
 use DDG::Spice;
 

@@ -1,4 +1,5 @@
 package DDG::Spice::Xkcd;
+# ABSTRACT
 
 use DDG::Spice;
 

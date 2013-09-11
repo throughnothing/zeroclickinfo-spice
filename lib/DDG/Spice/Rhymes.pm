@@ -1,4 +1,5 @@
 package DDG::Spice::Rhymes;
+# ABSTRACT
 
 use DDG::Spice;
 

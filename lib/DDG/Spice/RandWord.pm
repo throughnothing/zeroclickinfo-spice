@@ -1,4 +1,5 @@
 package DDG::Spice::RandWord;
+# ABSTRACT
 
 use DDG::Spice;
 
