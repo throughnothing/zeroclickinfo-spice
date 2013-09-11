@@ -1,5 +1,5 @@
 package DDG::Spice::GameInfo;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 primary_example_queries "homesick game";

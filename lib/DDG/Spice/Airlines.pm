@@ -1,5 +1,5 @@
 package DDG::Spice::Airlines;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::Guidebox::Lastshows;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

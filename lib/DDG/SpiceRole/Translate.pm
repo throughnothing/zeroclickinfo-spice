@@ -1,5 +1,4 @@
 package DDG::SpiceRole::Translate;
-# ABSTRACT
 # ABSTRACT: Defines a role for the Translate plugin with a common function for the Translate packages
 
 use Moo::Role;

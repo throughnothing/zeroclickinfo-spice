@@ -1,5 +1,5 @@
 package DDG::Spice::RedditSubSearch;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::Video;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::Hayoo;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

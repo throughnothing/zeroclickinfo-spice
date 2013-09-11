@@ -1,5 +1,5 @@
 package DDG::Spice::Quixey;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 use JSON;

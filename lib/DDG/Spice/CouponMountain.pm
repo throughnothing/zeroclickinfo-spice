@@ -1,5 +1,5 @@
 package DDG::Spice::CouponMountain;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

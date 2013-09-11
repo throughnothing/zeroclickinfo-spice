@@ -1,5 +1,5 @@
 package DDG::Spice::Movie;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

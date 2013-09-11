@@ -1,5 +1,5 @@
 package DDG::Spice::Forvo;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 use utf8;

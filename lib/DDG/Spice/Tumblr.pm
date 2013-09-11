@@ -1,5 +1,5 @@
 package DDG::Spice::Tumblr;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

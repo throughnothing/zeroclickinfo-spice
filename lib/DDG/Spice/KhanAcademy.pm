@@ -1,5 +1,5 @@
 package DDG::Spice::KhanAcademy;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

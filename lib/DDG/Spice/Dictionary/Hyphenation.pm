@@ -1,5 +1,5 @@
 package DDG::Spice::Dictionary::Hyphenation;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

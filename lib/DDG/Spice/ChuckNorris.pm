@@ -1,5 +1,5 @@
 package DDG::Spice::ChuckNorris;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

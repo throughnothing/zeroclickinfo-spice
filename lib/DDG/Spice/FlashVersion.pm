@@ -1,5 +1,5 @@
 package DDG::Spice::FlashVersion;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

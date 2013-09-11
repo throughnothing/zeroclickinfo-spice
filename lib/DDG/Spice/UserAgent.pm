@@ -1,5 +1,5 @@
 package DDG::Spice::UserAgent;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::Twitter;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::ESPN::NBA;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 use Time::localtime;

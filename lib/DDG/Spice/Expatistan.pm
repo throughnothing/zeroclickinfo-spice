@@ -1,5 +1,5 @@
 package DDG::Spice::Expatistan;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

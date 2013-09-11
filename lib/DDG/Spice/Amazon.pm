@@ -1,5 +1,5 @@
 package DDG::Spice::Amazon;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

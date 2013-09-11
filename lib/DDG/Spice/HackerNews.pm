@@ -1,5 +1,5 @@
 package DDG::Spice::HackerNews;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::Dictionary::Reference;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

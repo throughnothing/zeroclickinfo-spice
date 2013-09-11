@@ -1,6 +1,6 @@
 
 package DDG::Spice::SoundCloud;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::Zanran;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

@@ -1,5 +1,5 @@
 package DDG::Spice::Dictionary::Audio;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 

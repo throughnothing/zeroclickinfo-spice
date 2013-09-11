@@ -1,5 +1,5 @@
 package DDG::Spice::Canistreamit;
-# ABSTRACT
+# ABSTRACT:
 
 use DDG::Spice;
 
