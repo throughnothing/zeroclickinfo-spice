@@ -1,5 +1,4 @@
 package DDG::Spice::GithubJobs;
-# ABSTRACT
 # ABSTRACT: Search for jobs on Github.
 
 use DDG::Spice;

@@ -1,5 +1,4 @@
 package DDG::Spice::ExpandURL;
-# ABSTRACT
 # ABSTRACT: Gives expanded url of the query
 
 use DDG::Spice;

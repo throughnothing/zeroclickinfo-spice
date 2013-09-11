@@ -1,5 +1,4 @@
 package DDG::Spice::DNS;
-# ABSTRACT
 # ABSTRACT: Gets IP address of given domain name.
 
 use DDG::Spice;

@@ -1,5 +1,4 @@
 package DDG::Spice::Lastfm::Song;
-# ABSTRACT
 # ABSTRACT: Display song info.
 
 use DDG::Spice;

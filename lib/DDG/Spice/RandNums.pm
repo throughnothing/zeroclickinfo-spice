@@ -1,5 +1,4 @@
 package DDG::Spice::RandNums;
-# ABSTRACT
 # ABSTRACT: Get a sequence of random numbers
 
 use DDG::Spice;

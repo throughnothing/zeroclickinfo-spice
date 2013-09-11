@@ -1,5 +1,4 @@
 package DDG::Spice::Shorten;
-# ABSTRACT
 # ABSTRACT: Return a shortened version of a URL using the bitly API.
 
 use DDG::Spice;

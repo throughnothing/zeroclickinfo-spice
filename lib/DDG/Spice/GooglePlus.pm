@@ -1,5 +1,4 @@
 package DDG::Spice::GooglePlus;
-# ABSTRACT
 # ABSTRACT: Search for Google+ users and return their bio.
 
 use DDG::Spice;

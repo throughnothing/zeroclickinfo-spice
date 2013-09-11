@@ -1,5 +1,4 @@
 package DDG::Spice::MetaCPAN;
-# ABSTRACT
 # ABSTRACT: Show a summary of the searched CPAN module.
 
 use DDG::Spice;

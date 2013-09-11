@@ -1,5 +1,4 @@
 package DDG::Spice::Imdb;
-# ABSTRACT
 # ABSTRACT: Give a summary of the movie from its IMDB page.
 
 use DDG::Spice;

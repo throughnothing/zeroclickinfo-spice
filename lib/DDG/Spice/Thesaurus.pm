@@ -1,5 +1,4 @@
 package DDG::Spice::Thesaurus;
-# ABSTRACT
 # ABSTRACT: Give the synonym, antonym, similar and related words of the query.
 
 use DDG::Spice;
