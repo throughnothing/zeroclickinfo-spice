@@ -1,6 +1,4 @@
 package DDG::Spice::Automeme;
-# ABSTRACT
-
 # ABSTRACT: DuckDuckGo + Automeme.net = profound nonsense
 
 use DDG::Spice;
