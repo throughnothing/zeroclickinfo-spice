@@ -1,4 +1,3 @@
-
 package DDG::Spice::SoundCloud;
 # ABSTRACT:
 
