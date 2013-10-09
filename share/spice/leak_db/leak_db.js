@@ -1,4 +1,4 @@
-function ddg_spice_leak_db(api_result){
+function ddg_spice_leak_db(api_result) {
     if (!api_result || !api_result.found
             || !api_result.hashes) return;
 

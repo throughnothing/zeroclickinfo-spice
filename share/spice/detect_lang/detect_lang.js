@@ -2,7 +2,7 @@ function ddg_spice_detect_lang (api_result) {
     "use strict";
 
     // Check for any errors.
-    if(!api_result || !api_result.data || !api_result.data.detections || api_result.data.detections.length === 0) {
+    if (!api_result || !api_result.data || !api_result.data.detections || api_result.data.detections.length === 0) {
         return;
     }
 
@@ -10,18 +10,18 @@ function ddg_spice_detect_lang (api_result) {
     $("script").each(function() {
         var matched, result;
         matched = $(this).attr("src");
-        if(matched) {
+        if (matched) {
             result = matched.match(/\/js\/spice\/detect_lang\/([^\/]+)/);
-            if(result) {
+            if (result) {
                 query = decodeURIComponent(result[1]);
             }
         }
     });
 
     api_result.data.detections.sort(function(a, b) {
-        if(a.confidence > b.confidence) {
+        if (a.confidence > b.confidence) {
             return -1;
-        } else if(a.confidence < b.confidence) {
+        } else if (a.confidence < b.confidence) {
             return 1;
         }
         return 0;
@@ -110,7 +110,7 @@ function ddg_spice_detect_lang (api_result) {
     };
     Handlebars.registerHelper("expandLang", expandLang);
 
-    if(expandLang(api_result.data.detections[0].language) === "") {
+    if (expandLang(api_result.data.detections[0].language) === "") {
         return;
     }
 

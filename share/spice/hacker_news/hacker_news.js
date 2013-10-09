@@ -20,8 +20,8 @@ function ddg_spice_hacker_news(api_result) {
     });
 
     // Add click event.
-    $("a.hn_showHide").click(function(){
-        if ($(this).data("target")){
+    $("a.hn_showHide").click(function() {
+        if ($(this).data("target")) {
             var target = $(this).data("target");
             $(target).toggle();
         }

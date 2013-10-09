@@ -1,14 +1,14 @@
 function ddg_spice_reddit(api_result) {
 
-    if(!api_result || !api_result.data || !api_result.data.children || api_result.data.children.length === 0) {
+    if (!api_result || !api_result.data || !api_result.data.children || api_result.data.children.length === 0) {
         return;
     }
 
     // Check if we have search results. If we do, remove items with over_18 set to true.
     var results = [];
-    if(DDG.get_is_safe_search()) {
+    if (DDG.get_is_safe_search()) {
         for(var i = 0; i < api_result.data.children.length; i++) {
-            if(!api_result.data.children[i].data.over_18) {
+            if (!api_result.data.children[i].data.over_18) {
                 results.push(api_result.data.children[i]);
             }
         }
@@ -17,7 +17,7 @@ function ddg_spice_reddit(api_result) {
     }
 
     // Check if we still have results after filtering.
-    if(results.length === 0) {
+    if (results.length === 0) {
         return;
     }
     

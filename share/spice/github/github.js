@@ -30,7 +30,7 @@ function ddg_spice_github(api_result) {
 
 
 // Make sure we display only three items.
-Handlebars.registerHelper("last_pushed", function(){
+Handlebars.registerHelper("last_pushed", function() {
 
     var last_pushed = Math.floor((new Date() - new Date(this.pushed)) / (1000*60*60*24));
 

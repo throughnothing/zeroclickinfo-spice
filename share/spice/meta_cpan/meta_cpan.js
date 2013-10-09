@@ -3,7 +3,7 @@ function ddg_spice_meta_cpan(api_response) {
     
 	query = DDG.get_query().replace(/\s*(metacpan|meta cpan|cpanm?)\s*/i, '');
     var link = "search?q=" + encodeURIComponent(query);
-    if(api_response.module && api_response.module.length > 0 && api_response.module[0].associated_pod) {
+    if (api_response.module && api_response.module.length > 0 && api_response.module[0].associated_pod) {
         link = "module/" + api_response.module[0].associated_pod;
     }
 

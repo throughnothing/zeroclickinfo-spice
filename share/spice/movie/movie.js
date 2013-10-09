@@ -33,12 +33,12 @@ function ddg_spice_movie (api_result) {
     }
 
     // Check if the movie that we have is relevant enough.
-    if(!DDG.isRelevant(result.title, ignore)) {
+    if (!DDG.isRelevant(result.title, ignore)) {
         return;
     }
 
     var checkYear = function(year) {
-        if(year) {
+        if (year) {
             return " (" + year + ")";
         }
         return "";

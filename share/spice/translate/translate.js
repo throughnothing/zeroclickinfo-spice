@@ -9,12 +9,12 @@ function get_params(name, api_result) {
     var match = query.match(regex[name]);
 
     // get 2 letter language code
-    function shorten_lang(lang, flag){
+    function shorten_lang(lang, flag) {
         var langs = {'arabic' : 'ar','chinese' : 'zh','czech' : 'cz','english' : 'en','french' : 'fr','greek' : 'gr','italian' : 'it','japanese' : 'ja','korean' : 'ko','polish' : 'pl','portuguese' : 'pt','romanian' : 'ro','spanish' : 'es','turkish' : 'tr'},
             convert = {'cs': 'cz', 'el': 'gr'},
             out = langs[lang] || lang;
 
-        if (flag && convert[out]){
+        if (flag && convert[out]) {
             return convert[out];
         }
 
@@ -35,7 +35,7 @@ function get_params(name, api_result) {
 
         // grab language to translate from/to
         // if not in query
-        if (!match[1]){
+        if (!match[1]) {
 
             if (flag) {
                 script  = $("[src*='js/spice/translate/detect']")[0],

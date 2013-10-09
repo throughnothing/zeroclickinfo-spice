@@ -4,7 +4,7 @@ function ddg_spice_search_code(api_response) {
     var query = api_response.query;
     var data = api_response.results;
 
-    if(!data.length || data.length === 0) {
+    if (!data.length || data.length === 0) {
         return;
     }
 

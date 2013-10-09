@@ -7,7 +7,7 @@ function ddg_spice_hackage_packages(response) {
     var all_packages = {};
 
     // Check if it already exists.
-    if(query in response) {
+    if (query in response) {
         nrj("/js/spice/hackage/package_details/" + query);
     } else {
         // Convert to lowercase.
@@ -15,19 +15,19 @@ function ddg_spice_hackage_packages(response) {
 
         // Key gets the lowercase, and the value gets the unmodified string. 
         for(var normal_case in response) {
-            if(hasOwn.call(response, normal_case)) {
+            if (hasOwn.call(response, normal_case)) {
                 all_packages[normal_case.toLowerCase()] = normal_case;
             }
         }
 
         // If the query exists in the dictionary, call Haskell::PackageDetails.
-        if(all_packages[query]) {
+        if (all_packages[query]) {
             nrj("/js/spice/hackage/package_details/" + all_packages[query]);
         // Now we fumble around. First, check if we find one by just adding an "s" at the end.
-        } else if(all_packages[query + "s"]){
+        } else if (all_packages[query + "s"]) {
             nrj("/js/spice/hackage/package_details/" + all_packages[query + "s"]);
         // Second, we check if we find one by removing the last letter. It's a bit silly, but it works.
-        } else if(all_packages[query.substring(0, query.length-1)]) {
+        } else if (all_packages[query.substring(0, query.length-1)]) {
             nrj("/js/spice/hackage/package_details/" + all_packages[query.substring(0, query.length-1)]);
         }
     }

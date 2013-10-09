@@ -1,7 +1,7 @@
 function ddg_spice_in_theaters (api_result) {
 
     // Exit if we don't find any movies or if we see an error.
-    if(api_result.error || !api_result.movies || api_result.movies.length === 0) {
+    if (api_result.error || !api_result.movies || api_result.movies.length === 0) {
         return;
     }
 
@@ -10,16 +10,16 @@ function ddg_spice_in_theaters (api_result) {
     var matched, result, query = "";
     $("script").each(function() {
         matched = $(this).attr("src");
-        if(matched) {
+        if (matched) {
             result = matched.match(/\/js\/spice\/in_theaters\/([^\/]+)/);
-            if(result) {
+            if (result) {
                 query = result[1];
             }
         }
     });
 
     var header = "";
-    if(query === "opening") {
+    if (query === "opening") {
         header = "Opening Movies";
     } else {
         header = "Currently in Theaters";
@@ -47,8 +47,8 @@ Handlebars.registerHelper("time", function(runtime) {
     var hour = 0,
         minute = 0;
 
-    if(runtime) {
-        if(runtime >= 60) {
+    if (runtime) {
+        if (runtime >= 60) {
             hour = Math.floor(runtime / 60);
             minute = runtime - (hour * 60);
         } else {
@@ -91,7 +91,7 @@ Handlebars.registerHelper("checkRating", function(critics_rating) {
 });
 
 Handlebars.registerHelper("checkScore", function(critics_score) {
-    if(critics_score === -1) {
+    if (critics_score === -1) {
         return "";
     }
     return ": " + critics_score + "%";

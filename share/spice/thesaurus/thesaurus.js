@@ -22,24 +22,24 @@ function ddg_spice_thesaurus (api_result) {
 
     // Create the header.
     var header = "Thesaurus";
-    if(shorthand[mode] === "syn") {
+    if (shorthand[mode] === "syn") {
         header = "Synonyms of " + query;
-    } else if(shorthand[mode] === "ant") {
+    } else if (shorthand[mode] === "ant") {
         header = "Antonyms of " + query;
-    } else if(shorthand[mode] === "rel") {
+    } else if (shorthand[mode] === "rel") {
         header = "Related to " + query;
-    } else if(shorthand[mode] === "sim") {
+    } else if (shorthand[mode] === "sim") {
         header = "Similar to " + query;
     }
 
     // Check if the mode exists.
     var how_many = 0;
     for(var i in api_result) {
-        if(api_result.hasOwnProperty(i) && (shorthand[mode] in api_result[i])) {
+        if (api_result.hasOwnProperty(i) && (shorthand[mode] in api_result[i])) {
             how_many += 1;
         }
     }
-    if(how_many === 0) {
+    if (how_many === 0) {
         return;
     }
 
@@ -65,7 +65,7 @@ Handlebars.registerHelper("checkWords", function(options) {
         mode = this.mode;
 
     for(var parts_of_speech in this) {
-        if(this.hasOwnProperty(parts_of_speech) && this[parts_of_speech][mode]) {
+        if (this.hasOwnProperty(parts_of_speech) && this[parts_of_speech][mode]) {
             results.push({
                 heading : parts_of_speech.charAt(0).toUpperCase() + parts_of_speech.slice(1),
                 words   : this[parts_of_speech][mode].splice(0, 10).join(", ")

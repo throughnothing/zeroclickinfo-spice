@@ -7,7 +7,7 @@ function ddg_spice_lastfm_artist_album (api_result) {
     ];
 
     // Don't do anything if we find an error.
-    if(api_result.error || !api_result.topalbums || !api_result.topalbums.album || api_result.topalbums.album.length === 0) {
+    if (api_result.error || !api_result.topalbums || !api_result.topalbums.album || api_result.topalbums.album.length === 0) {
         return;
     }
 

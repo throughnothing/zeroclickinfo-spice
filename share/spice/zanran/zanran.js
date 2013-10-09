@@ -1,10 +1,10 @@
 function ddg_spice_zanran(api_result) {
-    if(!api_result || !api_result.results || api_result.results.length === 0) {
+    if (!api_result || !api_result.results || api_result.results.length === 0) {
         return;
     }
 
     var checkImage = function(image) {
-        if(image) {
+        if (image) {
             return "/iu/?u=" + image;
         }
         return "";

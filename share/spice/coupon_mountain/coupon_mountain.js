@@ -38,7 +38,7 @@ function ddg_spice_coupon_mountain (api_result) {
 }
 
 Handlebars.registerHelper("check_expirey", function(string) {
-    if (string != "3333-03-03"){
+    if (string != "3333-03-03") {
         fn.options(string);
     }
 });

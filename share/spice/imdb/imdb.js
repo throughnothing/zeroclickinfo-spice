@@ -16,14 +16,14 @@ function ddg_spice_imdb(api_result) {
 }
 
 
-Handlebars.registerHelper('runtime', function(){
+Handlebars.registerHelper('runtime', function() {
     return (movie.runtime !== 'N/A') ?
     	'' :
     	this.Runtime.replace(/\s/g, '').replace('min', 'm');
 });
 
 
-function reverse(s){
+function reverse(s) {
     return s.split("").reverse().join("");
 }
 
@@ -47,7 +47,7 @@ Handlebars.registerHelper("rating_adjective", function() {
     var adjective;
 
     // Is it released?
-    if ( released > currentDate || this.Year > currentDate.getFullYear() ){
+    if ( released > currentDate || this.Year > currentDate.getFullYear() ) {
         return 'an upcoming ';
 	}
 
@@ -59,13 +59,13 @@ Handlebars.registerHelper("rating_adjective", function() {
 
 
 // mpaa_rating
-Handlebars.registerHelper('mpaa_rating', function(){
+Handlebars.registerHelper('mpaa_rating', function() {
     return (this.Rated === 'N/A') ? 'unrated' : this.Rated;
 });
 
 
 // runtime
-Handlebars.registerHelper('get_runtime', function(){
+Handlebars.registerHelper('get_runtime', function() {
     if (this.Runtime !== 'N/A') {
         var runtime = this.Runtime.replace(/\s+/g, '').replace("min", "m");
         return runtime + ", ";
@@ -76,7 +76,7 @@ Handlebars.registerHelper('get_runtime', function(){
 
 
 // check for movie or tv show
-Handlebars.registerHelper('result_type', function(){
+Handlebars.registerHelper('result_type', function() {
     if (this.Type !== "N/A") {
 	return this.Type;
     }
@@ -85,7 +85,7 @@ Handlebars.registerHelper('result_type', function(){
 
 
 // imdbRating
-Handlebars.registerHelper('get_rating', function(){
+Handlebars.registerHelper('get_rating', function() {
     return (this.imdbRating !== 'N/A') ?
         this.imdbRating + "/10" :
         "unrated";
@@ -93,13 +93,13 @@ Handlebars.registerHelper('get_rating', function(){
 
 
 // actors
-Handlebars.registerHelper('actors_and_director', function(){
+Handlebars.registerHelper('actors_and_director', function() {
     if (this.Actors !== 'N/A' && this.Director !== 'N/A') {
 	   return "starring " + this.Actors +
               " and directed by " + this.Director;
     }
 
-    else if (this.Actors !== 'N/A'){
+    else if (this.Actors !== 'N/A') {
         var actors = replaceLast(this.Actors, ',', ' and ');
 	return "starring " + actors;
     }
@@ -114,7 +114,7 @@ Handlebars.registerHelper('actors_and_director', function(){
 });
 
 // movie plot
-Handlebars.registerHelper('plot', function(){
+Handlebars.registerHelper('plot', function() {
     if (this.Plot !== 'N/A') {
     	return this.Plot;
     }

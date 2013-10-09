@@ -8,9 +8,9 @@ function ddg_spice_rand_nums(api_result) {
     $("script").each(function() {
         var matched, result;
         matched = $(this).attr("src");
-        if(matched) {
+        if (matched) {
             result = matched.match(/\/js\/spice\/rand_nums\/([^\/]+)\/(.+)/);
-            if(result) {
+            if (result) {
                 min = result[1];
                 max = result[2];
             }

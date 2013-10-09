@@ -13,7 +13,7 @@ function ddg_spice_xkcd(api_result) {
 }
 
 Handlebars.registerHelper("previousNum", function(num, options) {
-    if(num > 1) {
+    if (num > 1) {
         return options.fn({num: num - 1});
     }
 });

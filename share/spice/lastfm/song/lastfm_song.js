@@ -8,7 +8,7 @@ function ddg_spice_lastfm_song(api_result) {
     };
 
     // Exit if we find an error.
-    if(!api_result || !api_result.track || !api_result.track.artist || checkString(api_result.track.name) || !api_result.track.mbid ||
+    if (!api_result || !api_result.track || !api_result.track.artist || checkString(api_result.track.name) || !api_result.track.mbid ||
         checkString(api_result.track.artist.name)) {
         return;
     }
@@ -26,7 +26,7 @@ function ddg_spice_lastfm_song(api_result) {
     ];
 
     // Display the plug-in.
-    if(DDG.isRelevant(api_result.track.name + " " + api_result.track.artist.name, skip)) {
+    if (DDG.isRelevant(api_result.track.name + " " + api_result.track.artist.name, skip)) {
         Spice.render({
             data             : api_result,
             header1          : api_result.track.name,

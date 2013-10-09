@@ -2,7 +2,7 @@
 function ddg_spice_lastfm (api_result, template) {
     "use strict";
 
-    if(template === "similar") {
+    if (template === "similar") {
         api_result.display = false;
     } else {
         api_result.display = true;
@@ -34,12 +34,12 @@ function ddg_spice_lastfm (api_result, template) {
     ];
 
     // Don't do anything if we find an error, or if the result is irrelevant.
-    if(api_result.error || !api_result.artist || !api_result.artist.name) {
+    if (api_result.error || !api_result.artist || !api_result.artist.name) {
         return;
     }
 
     // Display the plugin.
-    if(DDG.isRelevant(api_result.artist.name, skip, 4, true)) {
+    if (DDG.isRelevant(api_result.artist.name, skip, 4, true)) {
         Spice.render({
             data             : api_result,
             force_big_header : true,
@@ -89,7 +89,7 @@ Handlebars.registerHelper("snippet", function(text, method) {
     };
 
     // This shortens the text.
-    if(method === "some") {
+    if (method === "some") {
         return stripTags(text).slice(0, 200);
     } else {
         return stripTags(text);

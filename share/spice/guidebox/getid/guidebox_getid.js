@@ -62,7 +62,7 @@ function ddg_spice_guidebox_lastshows (api_result) {
 };
 
 Handlebars.registerHelper("checkSeason", function(season_number, episode_number, options) {
-    if(season_number !== "0") {
+    if (season_number !== "0") {
 	return options.fn({
 	    season_number: season_number, 
 	    episode_number: episode_number
@@ -90,7 +90,7 @@ Handlebars.registerHelper("getDate", function(first_aired) {
 
 Handlebars.registerHelper("pluralize", function(string, options) { 
     
-    if (options.hash && options.hash.singular && options.hash.plural){
+    if (options.hash && options.hash.singular && options.hash.plural) {
         var arr = string.split("|");
         return arr.length > 1 ? options.hash.plural : options.hash.singular
     }
@@ -103,7 +103,7 @@ Handlebars.registerHelper("split", function(string) {
 
 Handlebars.registerHelper("creators", function(options) {
     
-    if (this.writers.length || this.directors.length){
+    if (this.writers.length || this.directors.length) {
         return options.fn(this)
     }
     return "";

@@ -19,9 +19,9 @@ function ddg_spice_sound_cloud (api_result) {
     $("script").each(function() {
         var matched, result;
         matched = $(this).attr("src");
-        if(matched) {
+        if (matched) {
             result = matched.match(/\/js\/spice\/sound_cloud\/([^\/]+)/);
-            if(result) {
+            if (result) {
                 query = result[1];
             }
         }
@@ -30,13 +30,13 @@ function ddg_spice_sound_cloud (api_result) {
     // Remove the tracks that aren't streamable.
     var context= [];
     for(var i = 0; i < api_result.length; i += 1) {
-        if(api_result[i].streamable) {
+        if (api_result[i].streamable) {
             context.push(api_result[i]);
         }
     }
 
     // Exit if we don't have what we need.
-    if(!api_result || context.length === 0) {
+    if (!api_result || context.length === 0) {
         return;
     }
 
@@ -67,7 +67,7 @@ function ddg_spice_sound_cloud (api_result) {
         force_big_header         : true,
         force_no_fold            : true,
         item_callback            : function() {
-            if(window.soundManager) {
+            if (window.soundManager) {
                 clearPlayer();
             }
         }
@@ -91,7 +91,7 @@ function ddg_spice_sound_cloud (api_result) {
     var playSound = function(anchor) {
         soundManager.stopAll();
 
-        if(isFailed) {
+        if (isFailed) {
             setTimeout(function() {
                 clearPlayer();
             }, 1000);
@@ -109,7 +109,7 @@ function ddg_spice_sound_cloud (api_result) {
                     $("#total").html(formatTime(this.durationEstimate));
 
                     // We add this just in case onfinish doesn't fire.
-                    if(this.position === this.durationEstimate) {
+                    if (this.position === this.durationEstimate) {
                         clearPlayer();
                     }
                 }
@@ -155,7 +155,7 @@ function ddg_spice_sound_cloud (api_result) {
 
         // Check if it is already playing.
         // If it is, pause it.
-        if(li.hasClass("sm2_playing") && isLoaded) {
+        if (li.hasClass("sm2_playing") && isLoaded) {
             li.removeClass();
             li.addClass("sm2_paused");
 
@@ -163,7 +163,7 @@ function ddg_spice_sound_cloud (api_result) {
             sound.pause();
         // If it's not playing, it's probably paused.
         // Let's play it.
-        } else if(li.hasClass("sm2_paused")) {
+        } else if (li.hasClass("sm2_paused")) {
             li.removeClass();
             li.addClass("sm2_playing");
 
@@ -172,11 +172,11 @@ function ddg_spice_sound_cloud (api_result) {
         // If it's neither paused nor playing, then it means that we didn't load it yet.
         } else {
             // Load SoundManager2 if it hasn't already.
-            if(!isLoaded && !isLoading) {
+            if (!isLoaded && !isLoading) {
                 isLoading = true;
                 soundSetup(anchor);
             // If SoundManager already loaded, we should just play the sound.
-            } else if(isLoaded) {
+            } else if (isLoaded) {
                 playSound(anchor);
             }
             

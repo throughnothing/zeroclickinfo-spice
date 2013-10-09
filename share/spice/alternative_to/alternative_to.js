@@ -1,7 +1,7 @@
 function ddg_spice_alternative_to(api_result) {
     "use strict";
 
-    if(!api_result || !api_result.Items || api_result.Items.length === 0) {
+    if (!api_result || !api_result.Items || api_result.Items.length === 0) {
         return;
     }
 

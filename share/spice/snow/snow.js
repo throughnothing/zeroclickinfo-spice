@@ -9,13 +9,13 @@
 
 var nrio = function(api_result) {
     // Check for errors.
-    if(!api_result || api_result.error || !api_result.location) {
+    if (!api_result || api_result.error || !api_result.location) {
         return;
     }
 
     // Get only the city.
     var getLocation = function() {
-        if(api_result.location.indexOf(",") !== -1) {
+        if (api_result.location.indexOf(",") !== -1) {
             return api_result.location.substring(0, api_result.location.indexOf(","));
         }
         return api_result.location;

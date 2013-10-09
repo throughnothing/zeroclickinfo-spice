@@ -1,5 +1,5 @@
 function ddg_spice_smbc(api_result) {
-    if(!api_result || !api_result.items || api_result.items < 2) {
+    if (!api_result || !api_result.items || api_result.items < 2) {
         return;
     }
 

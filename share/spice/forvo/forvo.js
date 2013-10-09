@@ -43,7 +43,7 @@ function ddg_spice_forvo (api_result) {
     var playSound = function(anchor) {
         soundManager.stopAll();
 
-        if(isFailed) {
+        if (isFailed) {
             setTimeout(function() {
                 clearPlayer();
             }, 1000);
@@ -93,16 +93,16 @@ function ddg_spice_forvo (api_result) {
         var sound;
 
         // Make sure only one player is playing at any one time.
-        if(!last_id) {
+        if (!last_id) {
             last_id = current_id;
-        } else if(last_id !== current_id) {
+        } else if (last_id !== current_id) {
             last_id = current_id;
             clearPlayer();
         }
 
         // Check if it is already playing.
         // If it is, pause it.
-        if(li.hasClass("sm2_playing") && isLoaded) {
+        if (li.hasClass("sm2_playing") && isLoaded) {
             li.removeClass("sm2_playing");
             li.removeClass("sm2_stopped");
             li.addClass("sm2_paused");
@@ -111,7 +111,7 @@ function ddg_spice_forvo (api_result) {
             sound.pause();
         // If it's not playing, it's probably paused.
         // Let's play it.
-        } else if(li.hasClass("sm2_paused")){
+        } else if (li.hasClass("sm2_paused")) {
             li.removeClass("sm2_playing");
             li.removeClass("sm2_paused");
             li.addClass("sm2_playing");
@@ -121,11 +121,11 @@ function ddg_spice_forvo (api_result) {
         // If it's neither paused nor playing, we should load the audio and play it.
         } else {
             // Load SoundManager2 if it hasn't already.
-            if(!isLoaded && !isLoading) {
+            if (!isLoaded && !isLoading) {
                 isLoading = true;
                 soundSetup(anchor);
             // If SoundManager already loaded, we should just play the sound.
-            } else if(isLoaded) {
+            } else if (isLoaded) {
                 playSound(anchor);
             }
 
@@ -147,7 +147,7 @@ function ddg_spice_forvo (api_result) {
 Handlebars.registerHelper("forvo_sex", function(sex) {
     "use strict";
 
-    if(sex === "m")
+    if (sex === "m")
         return "Male";
 
     return "Female";

@@ -3,7 +3,7 @@ function ddg_spice_canistreamit (api_result) {
 
     var query = DDG.get_query().replace(/^(?:can\s*i?|how\s*to|where\s*(?:to|can\s+i))?\s*(?:find\s+a)?\s*(.+)$/, "$1");
 
-    if(!api_result || api_result.length === 0 || 
+    if (!api_result || api_result.length === 0 || 
         !DDG.stringsRelevant(api_result[0].title, query, ["stream", "watch", "streaming"]), 3) {
         return;
     }
@@ -29,7 +29,7 @@ Handlebars.registerHelper("createLinks", function(affiliates, options) {
         results = [];
 
     for(var index in affiliates) {
-        if(hasOwn.call(affiliates, index) && affiliates[index].price !== "") {
+        if (hasOwn.call(affiliates, index) && affiliates[index].price !== "") {
             affiliates[index].friendlyName = affiliates[index].friendlyName.replace(/ Rental$/, "");
             results.push(affiliates[index]);
         }
@@ -45,14 +45,14 @@ Handlebars.registerHelper("createMore", function(links, options) {
 
     var results = [];
 
-    if(links.rottentomatoes) {
+    if (links.rottentomatoes) {
         results.push({
             url: links.rottentomatoes,
             friendlyName: "Rotten Tomatoes"
         });
     }
 
-    if(links.imdb) {
+    if (links.imdb) {
         results.push({
             url: links.imdb,
             friendlyName: "IMDB"

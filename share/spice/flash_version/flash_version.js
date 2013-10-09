@@ -6,7 +6,7 @@ function ddg_spice_flash_version () {
     var context = {version: "You're using " + YAHOO.util.FlashDetect.raw};
 
     // Check if Flash was detected.
-    if(!YAHOO.util.FlashDetect.installed) {
+    if (!YAHOO.util.FlashDetect.installed) {
         context.version = "You don't have Flash installed";
     }
 

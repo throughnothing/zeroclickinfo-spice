@@ -11,7 +11,7 @@ function ddg_spice_airlines (api_result) {
     "use strict";
 
     // Check if we have anything returned.
-    if(!api_result || !api_result.flight) {
+    if (!api_result || !api_result.flight) {
         return;
     }
 
@@ -31,7 +31,7 @@ function ddg_spice_airlines (api_result) {
 
     // Check if flight is an array or not.
     var flight = api_result.flight;
-    if($.isArray(flight)) {
+    if ($.isArray(flight)) {
         flight = flight[0];
     }
 
@@ -72,9 +72,9 @@ function ddg_spice_airlines (api_result) {
             time += minutes + " mins ";
         }
 
-        if(delta === 0) {
+        if (delta === 0) {
             return "now";
-        } else if(delta > 0) {
+        } else if (delta > 0) {
             return "in " + time;
         } else {
             return time + "ago";
@@ -84,24 +84,24 @@ function ddg_spice_airlines (api_result) {
     // Check when the plane will depart (or if it has departed).
     Handlebars.registerHelper("airline_status", function(airportOffset, isDeparture) {
         var dateObject = arrivalDate;
-        if(isDeparture) {
+        if (isDeparture) {
             dateObject = departureDate;
         }
 
         var delta = relativeTime(dateObject, airportOffset);
 
-        if(isDeparture) {
-            if(delta === 0) {
+        if (isDeparture) {
+            if (delta === 0) {
                 return "Departing";
-            } else if(delta > 0) {
+            } else if (delta > 0) {
                 return "Departs";
             } else {
                 return "Departed";
             }
         } else {
-            if(delta === 0) {
+            if (delta === 0) {
                 return "Arriving";
-            } else if(delta > 0) {
+            } else if (delta > 0) {
                 return "Arrives";
             } else {
                 return "Arrived";
@@ -112,7 +112,7 @@ function ddg_spice_airlines (api_result) {
     // Compute for the relative time (e.g. 31 minutes ago).
     Handlebars.registerHelper("relative", function(airportOffset, isDeparture) {
         var dateObject = arrivalDate;
-        if(isDeparture) {
+        if (isDeparture) {
             dateObject = departureDate;
         }
 
@@ -129,7 +129,7 @@ function ddg_spice_airlines (api_result) {
     // Add the date and time or departure or arrival.
     Handlebars.registerHelper("airline_time", function(isDeparture) {
         var dateObject = arrivalDate;
-        if(isDeparture) {
+        if (isDeparture) {
             dateObject = departureDate;
         }
 
@@ -141,14 +141,14 @@ function ddg_spice_airlines (api_result) {
 
         // AM or PM?
         var suffix = "a.m.";
-        if(hours >= 12) {
+        if (hours >= 12) {
             suffix = "p.m.";
         }
 
         // Convert to 12-hour time.
-        if(hours > 12) {
+        if (hours > 12) {
             hours -= 12;
-        } else if(hours === 0) {
+        } else if (hours === 0) {
             hours = 12;
         }
 
@@ -165,8 +165,8 @@ function ddg_spice_airlines (api_result) {
 
         var deltaDepart = departureDate - scheduledDeparture;
         var deltaArrive = arrivalDate - scheduledArrival;
-        if(flight.StatusCode === "A") {
-            if(MILLIS_PER_MIN * 5 < deltaDepart && MILLIS_PER_MIN * 5 < deltaArrive) {
+        if (flight.StatusCode === "A") {
+            if (MILLIS_PER_MIN * 5 < deltaDepart && MILLIS_PER_MIN * 5 < deltaArrive) {
                 return "Delayed";
             } else {
                 return "On-time";

@@ -1,6 +1,6 @@
 var ddg_spice_twitter = function(api_result) {
 
-    if(!api_result || (!api_result.current_status && !api_result.description)) {
+    if (!api_result || (!api_result.current_status && !api_result.description)) {
         return;
     }
 
@@ -24,7 +24,7 @@ var ddg_spice_twitter = function(api_result) {
 Handlebars.registerHelper("findLinks", function(text, entities, options) {
     // Chop the string so that we can surreptitiously insert links.
     var twitterSplit = function(twitter, result, final_text, original, start_index, i) {
-        if(twitter.length === i || twitter.length === 0) {
+        if (twitter.length === i || twitter.length === 0) {
             result.push({text: final_text});
             return result;
         } else {
@@ -46,17 +46,17 @@ Handlebars.registerHelper("findLinks", function(text, entities, options) {
     // Concatenate all the entities. (It's easier this way.)
     var all_entities = [];
     for(var k in entities) {
-        if(entities.hasOwnProperty(k)) {
+        if (entities.hasOwnProperty(k)) {
             all_entities = all_entities.concat(entities[k]);
         }
     }
     
     // Sort indices. (These things have to be in order.)
     all_entities.sort(function(a, b) {
-        if(a.indices[0] < b.indices[0]) {
+        if (a.indices[0] < b.indices[0]) {
             return -1;
         }
-        if(a.indices[0] > b.indices[0]) {
+        if (a.indices[0] > b.indices[0]) {
             return 1;
         }
         return 0;
@@ -74,24 +74,24 @@ Handlebars.registerHelper("makeLinks", function(results) {
 
     var output = "";
     for(var i = 0; i < results.length; i += 1) {
-        if(!results[i].link) {
+        if (!results[i].link) {
             output += results[i].text;
         } else {
             var twitter = results[i].link;
             // If it's a mention.
-            if(twitter.screen_name) {
+            if (twitter.screen_name) {
                 output += createLink("https://twitter.com/" + results[i].text.replace(/^@/, ""), results[i].text);
             }
             // If it's a link.
-            if(twitter.url) {
+            if (twitter.url) {
                 output += createLink(twitter.url, twitter.display_url);
             }
             // If it's a picture or a video.
-            if(twitter.media_url) {
+            if (twitter.media_url) {
                 output += createLink(twitter.media_url_https, twitter.display_url);
             }
             // If it's a hashtag.
-            if(twitter.text) {
+            if (twitter.text) {
                 output += createLink("https://twitter.com/search?q=%23" + twitter.text, "&#35;" + twitter.text);
             }
         }

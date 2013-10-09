@@ -1,7 +1,7 @@
 function ddg_spice_forecast(r) {
   
   // Exit if we've got a bad forecast
-  if(!r || !r.hourly || !r.hourly.data || !r.daily || !r.daily.data)
+  if (!r || !r.hourly || !r.hourly.data || !r.daily || !r.daily.data)
     return
   
   // Render the container elements
@@ -40,27 +40,27 @@ function ddg_spice_forecast(r) {
   }
   
   var skycon_type = function(icon) {
-    if(icon === 'rain')
+    if (icon === 'rain')
       return 'rain'
-    else if(icon === 'snow')
+    else if (icon === 'snow')
       return 'snow'
-    else if(icon === 'sleet')
+    else if (icon === 'sleet')
       return 'sleet'
-    else if(icon === 'hail')
+    else if (icon === 'hail')
       return 'sleet'
-    else if(icon === 'wind')
+    else if (icon === 'wind')
       return 'wind'
-    else if(icon === 'fog')
+    else if (icon === 'fog')
       return 'fog'
-    else if(icon === 'cloudy')
+    else if (icon === 'cloudy')
       return 'cloudy'
-    else if(icon === 'partly-cloudy-day')
+    else if (icon === 'partly-cloudy-day')
       return 'partly_cloudy_day'
-    else if(icon === 'partly-cloudy-night')
+    else if (icon === 'partly-cloudy-night')
       return 'partly_cloudy_night'
-    else if(icon === 'clear-day')
+    else if (icon === 'clear-day')
       return 'clear_day'
-    else if(icon === 'clear-night')
+    else if (icon === 'clear-night')
       return 'clear_night'
     else
       return 'cloudy'
@@ -80,34 +80,34 @@ function ddg_spice_forecast(r) {
         speed_units = unit_labels[units].speed
     
     // If the next-hour summary is interesting enough, use that instead
-    if(f.minutely && !f.minutely.summary.match(/ for the hour\.$/))
+    if (f.minutely && !f.minutely.summary.match(/ for the hour\.$/))
       current_summary = f.minutely.summary
     
     // Find the first hourly point in the future, so we can figure out
     // if the temperature is rising or falling
     var temp_direction = 0
     for(var i = 0; i < hourly.length; i++) {
-      if(hourly[i].time < now) continue
+      if (hourly[i].time < now) continue
       temp_direction = hourly[i].temperature > f.currently.temperature ? 1 : -1
       break
     }
     
     var temp_str = '<span class="fe_temp_str">'+Math.round(f.currently.temperature)+'&deg;</span><span class="fe_temp_unit">'+unit_labels[units].temperature+'</span>'
-    if(temp_direction > 0)
+    if (temp_direction > 0)
       temp_str += ' <span class="fe_dir">and rising</span>'
-    else if(temp_direction < 0)
+    else if (temp_direction < 0)
       temp_str += ' <span class="fe_dir">and falling</span>'
     
-    if(f.currently.apparentTemperature)
+    if (f.currently.apparentTemperature)
       temp_str += ' <span class="fe_feelslike">Feels like '+Math.round(f.currently.apparentTemperature)+'&deg;'+'</span>'
     
     $container.find('.fe_currently .fe_temp').html(temp_str)
     $container.find('.fe_currently .fe_summary').html(current_summary)
     
-    if(f.currently.windSpeed) {
+    if (f.currently.windSpeed) {
       var wind_speed = Math.round(f.currently.windSpeed)
       
-      if(wind_speed != 0 && f.currently.windBearing)
+      if (wind_speed != 0 && f.currently.windBearing)
         wind_speed += ' '+speed_units+' ('+wind_bearing_to_str(f.currently.windBearing)+')'
       else
         wind_speed += ' '+speed_units
@@ -146,8 +146,8 @@ function ddg_spice_forecast(r) {
     
     for(var i = 0; i < num_days; i++) {
       day = days[i]
-      if(day.temperatureMax > high_temp) high_temp = day.temperatureMax
-      if(day.temperatureMin < low_temp) low_temp = day.temperatureMin
+      if (day.temperatureMax > high_temp) high_temp = day.temperatureMax
+      if (day.temperatureMin < low_temp) low_temp = day.temperatureMin
     }
     
     // Now create each day element
@@ -182,7 +182,7 @@ function ddg_spice_forecast(r) {
   var build_alerts = function(f) {
     $alert = $container.find('.fe_alert').empty()
     
-    if(!f.alerts || !f.alerts.length) {
+    if (!f.alerts || !f.alerts.length) {
       $alert.hide()
       return
     }

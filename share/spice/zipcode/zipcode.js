@@ -2,7 +2,7 @@ function ddg_spice_zipcode (api_result) {
     "use strict";
 
     // Check errors.
-    if(!api_result || !api_result.places || api_result.places.total === 0) {
+    if (!api_result || !api_result.places || api_result.places.total === 0) {
         return;
     }
 
@@ -67,7 +67,7 @@ function zipcode_getCountry (result, matches) {
         var resName = current.name.replace(/\s+/, "");
 
         // check if zipcodes match and either countries match OR no country specified
-        if (resName === zip && ( country === "ZZ" || current["country attrs"].code === country )){
+        if (resName === zip && ( country === "ZZ" || current["country attrs"].code === country )) {
             return locs[i];
         };
     };
@@ -84,26 +84,26 @@ Handlebars.registerHelper("checkZipcode", function(options) {
         name    = this.zip,
         country = this.relevantPlace["country attrs"].code;
 
-    if(locs.length === 1) return;
+    if (locs.length === 1) return;
 
     locs = locs.sort(function(a, b) {
         return a.country > b.country ? 1 : -1;
     });
 
     for(var i = 1; i < locs.length; i += 1) {
-        if(locs[i].name === name &&
+        if (locs[i].name === name &&
             locs[i]["country attrs"].code !== country ) {
             result.push(locs[i]);
         }
     }
 
-    if(result.length === 0) {
+    if (result.length === 0) {
         return;
     }
 
     result = options.fn(result);
 
-    if(result.replace(/\s+/, "") !== "") {
+    if (result.replace(/\s+/, "") !== "") {
         return "Postal code " + name + " in other countries: " + result;
     }
 });

@@ -36,7 +36,7 @@ function ddg_spice_dictionary_definition (api_result) {
 
         // Do not add hyphenation when we're asking for two words.
         // If we don't have this, we'd can have results such as "black• hole".
-        if(!word.match(/\s/)) {
+        if (!word.match(/\s/)) {
             $.getScript(path + "/hyphenation/" + word);
         }
 
@@ -64,7 +64,7 @@ function ddg_spice_dictionary_definition (api_result) {
 
         // If the word is plural, then we should load the definition of the word
         // in singular form. The definition of the singular word is usually more helpful.
-        if(api_result.length === 1 && singular) {
+        if (api_result.length === 1 && singular) {
             ddg_spice_dictionary_definition.pluralOf = api_result[0].word;
             $.getScript(path + "/reference/" + singular[1]);
         } else {
@@ -82,7 +82,7 @@ function ddg_spice_dictionary_reference (api_result) {
 
     var render = ddg_spice_dictionary_definition.render;
 
-    if(api_result && api_result.length > 0) {
+    if (api_result && api_result.length > 0) {
         var word = api_result[0].word;
 
         // We're doing this because we want to say:
@@ -101,9 +101,9 @@ function ddg_spice_dictionary_hyphenation (api_result) {
     "use strict";
 
     var result = [];
-    if(api_result && api_result.length > 0) {
+    if (api_result && api_result.length > 0) {
         for(var i = 0; i < api_result.length; i += 1) {
-            if(i === api_result[i].seq) {
+            if (i === api_result[i].seq) {
                 result.push(api_result[i].text);
             }
         }
@@ -117,7 +117,7 @@ function ddg_spice_dictionary_hyphenation (api_result) {
 function ddg_spice_dictionary_pronunciation (api_result) {
     "use strict";
 
-    if(api_result && api_result.length > 0 && api_result[0].rawType === "ahd-legacy") {
+    if (api_result && api_result.length > 0 && api_result[0].rawType === "ahd-legacy") {
         $("#pronunciation").html(api_result[0].raw);
     }
 };
@@ -142,16 +142,16 @@ function ddg_spice_dictionary_audio (api_result) {
     };
 
     // Check if we got anything from Wordnik.
-    if(api_result && api_result.length > 0) {
+    if (api_result && api_result.length > 0) {
         // Find the audio url that was created by Macmillan (it usually sounds better).
         for(var i = 0; i < api_result.length; i += 1) {
-            if(api_result[i].createdBy === "macmillan" && url === "") {
+            if (api_result[i].createdBy === "macmillan" && url === "") {
                 url = api_result[i].fileUrl;
             }
         }
 
         // If we don't find Macmillan, we use the first one.
-        if(url === "") {
+        if (url === "") {
             url = api_result[0].fileUrl;
         }
     } else {
@@ -175,7 +175,7 @@ function ddg_spice_dictionary_audio (api_result) {
             },
             whileplaying: function() {
                 // We add this just in case onfinish doesn't fire.
-                if(this.position === this.durationEstimate) {
+                if (this.position === this.durationEstimate) {
                     resetIcon();
                     soundManager.stopAll();
                 }
@@ -214,10 +214,10 @@ function ddg_spice_dictionary_audio (api_result) {
     // Play the sound when the icon is clicked. Do not let the user play
     // without window.soundManager.
     icon.click(function() {
-        if(isFailed) {
+        if (isFailed) {
             pressIcon();
             setTimeout(resetIcon, 1000);
-        } else if(!icon.hasClass("widget-button-press") && isLoaded) {
+        } else if (!icon.hasClass("widget-button-press") && isLoaded) {
             pressIcon();
             soundManager.play("dictionary-sound");
         }

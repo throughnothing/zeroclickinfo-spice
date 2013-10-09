@@ -15,7 +15,7 @@ function ddg_spice_news(api_result) {
 
     // Check if the word news is in the query.
     var generic = false;
-    if((/\bnews\b/i).test(DDG.get_query())) {
+    if ((/\bnews\b/i).test(DDG.get_query())) {
         generic = true;
     }
 
@@ -26,8 +26,8 @@ function ddg_spice_news(api_result) {
             story.source = story.author || "Topsy";
             break;
             case "NewsCred":
-            if(story.source) {
-		if(story.author) {
+            if (story.source) {
+		if (story.author) {
 		    story.source = story.source + " by " + story.author;
 		}
 	    } else {
@@ -44,12 +44,12 @@ function ddg_spice_news(api_result) {
 
 	for(var i = 0; i < words.length; i++) {
 	    count += words[i].length + 1;
-	    if(count < limit) {
+	    if (count < limit) {
 		result.push(words[i]);
 	    }
 	}
 
-	if(words.length > result.length && 
+	if (words.length > result.length && 
 	   !(result[result.length - 1].match(/\.$/))) {
 	    result.push("...");
 	}	   
@@ -62,11 +62,11 @@ function ddg_spice_news(api_result) {
     }
 
     var good_stories = [];
-    if(generic) {
+    if (generic) {
         good_stories = api_result;
     } else {
         for(var i = 0, story; story = api_result[i]; i++) {
-	    if(DDG.isRelevant(story.title, skip, 3)) {
+	    if (DDG.isRelevant(story.title, skip, 3)) {
                 getSource(story);
                 good_stories.push(story);
             }
@@ -74,11 +74,11 @@ function ddg_spice_news(api_result) {
     }
 
     // Exit if we didn't get any results.
-    if(good_stories.length === 0) {
+    if (good_stories.length === 0) {
         return;
     }
 
-    if(good_stories.length > 1) {
+    if (good_stories.length > 1) {
 	for(var i = 0, story; story = good_stories[i]; i++) {
 	    story.title = ellipsis(story.title, 55);
 	    story.excerpt = ellipsis(story.excerpt, 130);
@@ -112,14 +112,14 @@ Handlebars.registerHelper("getIcon", function(url) {
 
 Handlebars.registerHelper("getDomain", function(url) {
     re = new RegExp('^.*?\/\/([^\/\?\:\#]+)');
-    if(re.test(url)) {
+    if (re.test(url)) {
 	return RegExp.$1;
     }
 });
 
 Handlebars.registerHelper("getTime", function(relative_time) {
     relative_time = relative_time.match(/([0-9]+)([a-z]+).*/);
-    if(+relative_time[1] > 1) {
+    if (+relative_time[1] > 1) {
 	return relative_time[1] + " " + (relative_time[2] === "hr" ? "hrs" : "mins");
     }
     return relative_time[1] + " " + relative_time[2];

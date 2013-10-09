@@ -1,5 +1,5 @@
 function ddg_spice_video(api_result) {
-    if(!api_result || api_result.length === 0) {
+    if (!api_result || api_result.length === 0) {
         return;
     }
 
@@ -90,7 +90,7 @@ function ddg_spice_video(api_result) {
 	var video_title = $("#spice_video #video-title").width();
 	var video_links = $("#spice_video .links").width();
 
-	if(width - (video_title + video_links) < 20) {
+	if (width - (video_title + video_links) < 20) {
 	    $("#spice_video .links").css("position", "static");
 	} else {
 	    $("#spice_video .links").css("position", "absolute");
@@ -108,7 +108,7 @@ function ddg_spice_video(api_result) {
 
 // This is the callback function of /itt.
 ddg_spice_video.itunes = function(api_result) {
-    if(!api_result || !api_result.results || api_result.results.length === 0) {
+    if (!api_result || !api_result.results || api_result.results.length === 0) {
         return;
     }
 
@@ -118,7 +118,7 @@ ddg_spice_video.itunes = function(api_result) {
 
     // Find the song that matches.
     for(var i = 0; i < api_result.results.length; i++) {
-	if(artist === api_result.results[i].artistName.toLowerCase() ||
+	if (artist === api_result.results[i].artistName.toLowerCase() ||
 	   artist === api_result.results[i].trackName.toLowerCase() ||
 	   song === api_result.results[i].artistName.toLowerCase() ||
 	   song === api_result.results[i].trackName.toLowerCase()) {
@@ -156,7 +156,7 @@ Handlebars.registerHelper("checkMusic", function(category, title, options) {
     $.getScript("/iit/" + encodeURIComponent(title));
 
     // Only add links to the music if, well, we have links to the music section.
-    if(category === "Music") {
+    if (category === "Music") {
 	// There's no need to escape the values--Handlebars.js does this for us.
 	return options.fn({
 	    title: title,
@@ -169,7 +169,7 @@ Handlebars.registerHelper("checkMusic", function(category, title, options) {
 // We'll use this for showing the view counts.
 Handlebars.registerHelper("formatViews", function(views) {
     "use strict";
-    if(views) {
+    if (views) {
 	return String(views).replace(/(\d)(?=(\d{3})+(\.\d+|)\b)/g, "$1,");
     }
 });
@@ -194,7 +194,7 @@ Handlebars.registerHelper("playURL", function(provider_data, id) {
 });
 
 Handlebars.registerHelper("checkStatistics", function(viewCount, options) {
-    if(viewCount === null) {
+    if (viewCount === null) {
 	return "";
     }
     return options.fn({viewCount: viewCount});

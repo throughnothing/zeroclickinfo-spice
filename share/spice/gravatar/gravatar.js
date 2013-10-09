@@ -10,20 +10,20 @@
 
 function ddg_spice_gravatar (api_result) {
     // Check for errors.
-    if(!api_result || !api_result.entry || api_result.entry.length === 0) {
+    if (!api_result || !api_result.entry || api_result.entry.length === 0) {
         return;
     }
 
     // Get the name of the user (if available).
     var getName = function(entry) {
         var name = "";
-        if(!entry.name || !entry.displayName) {
+        if (!entry.name || !entry.displayName) {
             return;
         }
 
-        if(entry.name.formatted) {
+        if (entry.name.formatted) {
             return entry.name.formatted;
-        } else if(entry.name.givenName && entry.name.familyName) {
+        } else if (entry.name.givenName && entry.name.familyName) {
             return entry.name.givenName + " " + entry.name.familyName;
         }
         return entry.displayName;
@@ -45,13 +45,13 @@ function ddg_spice_gravatar (api_result) {
 // Find the primary e-mail.
 Handlebars.registerHelper("getEmail", function(emails, options) {
     // Check if the variable exists.
-    if(!emails) {
+    if (!emails) {
         return;
     }
 
     // Find the primary email.
     for(var i = 0; i < emails.length; i += 1) {
-        if(emails[i].primary) {
+        if (emails[i].primary) {
             return options.fn(emails[i]);
         }
     }
@@ -59,17 +59,17 @@ Handlebars.registerHelper("getEmail", function(emails, options) {
 
 // If we don't have any information to display, just show this.
 Handlebars.registerHelper("fallbackInfo", function(emails, aboutMe, currentLocation, accounts, context, options) {
-    if(!emails && !aboutMe && !currentLocation && !accounts) {
+    if (!emails && !aboutMe && !currentLocation && !accounts) {
         return options.fn(context);
     }
 });
 
 // This is for favicons that don't work.
 Handlebars.registerHelper("checkDomain", function(domain) {
-    if(domain === "plus.google.com") {
+    if (domain === "plus.google.com") {
         return "google.com";
     }
-    if(domain === "yelp.com") {
+    if (domain === "yelp.com") {
         return "/iu/?u=http://s3-media2.ak.yelpcdn.com/assets/2/www/img/118ff475a341/ico/favicon.ico";
     }
     return domain;

@@ -1,5 +1,5 @@
 function ddg_spice_expatistan(api_result) {
-    if(!api_result || api_result.status !== 'OK') {
+    if (!api_result || api_result.status !== 'OK') {
         return;
     }
 

@@ -1,6 +1,6 @@
 function ddg_spice_octopart (api_result) {
 
-    if(!api_result || !api_result.results || api_result.results.length === 0) {
+    if (!api_result || !api_result.results || api_result.results.length === 0) {
         return;
     }
 
@@ -20,10 +20,10 @@ function ddg_spice_octopart (api_result) {
             DDG.isRelevant(iter.item.manufacturer.displayname, skip_words, 4, true);
 
         // Check if we have images.
-        if(iter.item.images.length > 0 && isRelevant) {
+        if (iter.item.images.length > 0 && isRelevant) {
             results.push(iter);
         // If an image doesn't exist, add a different image.
-        } else if(isRelevant) {
+        } else if (isRelevant) {
             iter.item.images.push({
                 url_90px: "http://n1.octostatic.com/o3web/detail/images/camera-icon.png"
             });
@@ -31,7 +31,7 @@ function ddg_spice_octopart (api_result) {
         }
     }
 
-    if(results.length === 0) {
+    if (results.length === 0) {
         return;
     }
 

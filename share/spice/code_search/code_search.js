@@ -14,10 +14,10 @@ function ddg_spice_code_search(response) {
     }
 
     lines.sort(function(a, b) {
-        if(a[0] < b[0]) {
+        if (a[0] < b[0]) {
             return -1;
         }
-        if(a[0] > b[0]) {
+        if (a[0] > b[0]) {
             return 1;
         }
         return 0;
