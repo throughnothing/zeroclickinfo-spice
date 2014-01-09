@@ -1,8 +1,7 @@
-function ddg_spice_word_map(api_result) 
-{
-	var json = null;
-	json = $.parseJSON(api_result);
-	if ( 200 != json.result_code ) return;
+function ddg_spice_word_map(api_result) {
+    // api_result is a string so we have to convert it to an object.
+    var json = $.parseJSON(api_result);
+    if ( 200 != json.result_code ) return;
 
     Spice.render({
         data             	: json,
